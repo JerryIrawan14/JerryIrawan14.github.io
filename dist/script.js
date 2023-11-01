@@ -29,17 +29,21 @@ let currentIndex = 0;
 
 function showImage(index) {
     images.forEach((image, i) => {
+        console.log(`i: ${i}, index: ${index}`);
         image.style.transform = `translateX(${(i - index) * 100}%)`;
     });
 }
 
 function prevImage() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    currentIndex = (currentIndex + images.length - 1) % images.length ;
     showImage(currentIndex);
 }
 
+
+
 function nextImage() {
     currentIndex = (currentIndex + 1) % images.length;
+    console.log("Next clicked, currentIndex:", currentIndex);
     showImage(currentIndex);
 }
 
