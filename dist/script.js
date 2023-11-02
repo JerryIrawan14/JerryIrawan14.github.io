@@ -51,3 +51,54 @@ prevBtn.addEventListener("click", prevImage);
 nextBtn.addEventListener("click", nextImage);
 
 showImage(currentIndex);
+
+
+// testi carousel 
+
+document.addEventListener("DOMContentLoaded", function () {
+    const wrapperTestimonial = document.getElementById("wrapperTestimonial");
+    const prevButton = document.getElementById("prevBtnTesti");
+    const nextButton = document.getElementById("nextBtnTesti");
+  
+    const carouselItems = wrapperTestimonial.querySelectorAll(".rounded-md.shadow-md");
+    const itemsPerSlide = 2;
+    let currentIndex = 0;
+  
+    function showItems() {
+      for (let i = 0; i < carouselItems.length; i++) {
+        carouselItems[i].style.display = "none";
+      }
+  
+      for (let i = currentIndex; i < currentIndex + itemsPerSlide; i++) {
+        if (carouselItems[i]) {
+          carouselItems[i].style.display = "block";
+        }
+      }
+    }
+  
+    function prevSlide() {
+      currentIndex -= itemsPerSlide;
+      if (currentIndex < 0) {
+        currentIndex = carouselItems.length - itemsPerSlide; // Wrap around to the last slide
+      }
+      showItems();
+    }
+  
+    function nextSlide() {
+      currentIndex += itemsPerSlide;
+      if (currentIndex >= carouselItems.length) {
+        currentIndex = 0; // Wrap back to the first slide
+      }
+      showItems();
+    }
+  
+    prevButton.addEventListener("click", prevSlide);
+    nextButton.addEventListener("click", nextSlide);
+  
+    // Show the initial items
+    showItems();
+  });
+  
+  
+  
+  
